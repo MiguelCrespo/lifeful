@@ -15,10 +15,36 @@ export default class SetupApp extends Component {
         showCustomOptions: false
     }
 
+    constructor(props) {
+        super(props);
+
+        this.onChangeBackgroundColor = this.onChangeBackgroundColor.bind(this);
+        this.onChangeTextColor = this.onChangeTextColor.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onChangeBackgroundColor(e) {
+        this.setState({ settings: { ...this.state.settings, backgroundColor: e.target.value } });
+
+        this.props.onChangeBackgroundColor(e.target.value);
+    }
+
+    onChangeTextColor(e) {
+        this.setState({ settings: { ...this.state.settings, textColor: e.target.value } });
+
+        this.props.onChangeTextColor(e.target.value);
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        this.props.onChangeUser(this.state.userInfo);
+    }
+
     render() {
         return (
             <section className={styles.container}>
-                <section>
+                <form onSubmit={this.onSubmit}>
                     <label className={styles.label}>
                         <span>Your name</span>
                         <input className="input" value={this.state.userInfo.name} onChange={(e) => { this.setState({ userInfo: { ...this.state.userInfo, name: e.target.value } }) }} />
@@ -37,17 +63,17 @@ export default class SetupApp extends Component {
                     <div className={this.state.showCustomOptions ? styles.colorsContainerActive : styles.colorsContainer}>
                         <label className={this.state.showCustomOptions ? styles.labelColor1 : ''}>
                             <span>Background Color</span>
-                            <input className="input" type="color" value={this.state.settings.backgroundColor} onChange={(e) => { this.setState({ settings: { ...this.state.settings, backgroundColor: e.target.value } }) }} />
+                            <input className="input" type="color" value={this.state.settings.backgroundColor} onChange={this.onChangeBackgroundColor} />
                         </label>
 
                         <label className={this.state.showCustomOptions ? styles.labelColor2 : ''}>
                             <span>Text Color</span>
-                            <input className="input" type="color" value={this.state.settings.textColor} onChange={(e) => { this.setState({ settings: { ...this.state.settings, textColor: e.target.value } }) }} />
+                            <input className="input" type="color" value={this.state.settings.textColor} onChange={this.onChangeTextColor} />
                         </label>
                     </div>
 
                     <button className={styles.button + ' button'}>Motivate?</button>
-                </section>
+                </form>
             </section>
         );
     }
