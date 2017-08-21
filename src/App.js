@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.css';
+
+import SetupApp from './setup-app';
 
 class App extends Component {
+  state = {
+    config: null,
+  }
+
   render() {
     return (
-      <h1>App</h1>
+      <section className={styles.container}>
+        {!this.state.config && <SetupApp />}
+      </section>
     );
   }
 }

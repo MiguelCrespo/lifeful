@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.label {
+    display: flex;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.labelRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.labelCheckbox {
+    composes: labelRow;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.labelCheckbox>span {
+    margin-right: .7rem;
+    margin-bottom: 0!important;
+}
+
+.label>span {
+    margin-bottom: .3rem;
+}
+
+.colorsContainer {
+    transform-origin: 0 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    transition: transform .6s;
+    height: 0;
+    overflow: hidden;
+}
+
+.colorsContainerActive {
+    composes: colorsContainer;
+    height: auto;
+}
+
+.labelColor {
+    composes: label labelRow;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+@keyframes showLabelColor {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.labelColor input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -webkit-appearance: checkbox;
+    height: 3rem;
+}
+
+.labelColor span {
+    line-height: 3rem;
+}
+
+.labelColor1 {
+    composes: labelColor;
+    transform: translateY(-100%);
+    animation: showLabelColor .5s forwards;
+}
+
+.labelColor2 {
+    composes: labelColor;
+    transform: translateY(-200%);
+    animation: showLabelColor .5s .8s forwards;
+}
+
+.button {
+    font-size: 1.5rem;
+    width: 100%;
+    background-color: #fff;
+    color: #35343D;
+}
