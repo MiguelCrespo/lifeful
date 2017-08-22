@@ -46,11 +46,29 @@ class App extends Component {
   }
 
   render() {
+    let backgroundColor, textColor;
+
+    if (this.state.settings && this.state.settings.backgroundColor) {
+      backgroundColor = this.state.settings.backgroundColor;
+    } else if (this.state.loading) {
+      backgroundColor = '#fff';
+    } else {
+      backgroundColor = '#00CA9D';
+    }
+
+    if (this.state.settings && this.state.settings.textColor) {
+      textColor = this.state.settings.textColor;
+    } else if (this.state.loading) {
+      textColor = '#fff';
+    } else {
+      textColor = '#fff';
+    }
+
     return (
       <section className={styles.container} style={
         {
-          backgroundColor: this.state.settings && this.state.settings.backgroundColor ? this.state.settings.backgroundColor : '',
-          color: this.state.settings && this.state.settings.textColor ? this.state.settings.textColor : '',
+          backgroundColor,
+          color: textColor,
         }
       }>
         {!this.state.user && !this.state.loading && <SetupApp

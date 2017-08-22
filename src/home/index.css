@@ -5,6 +5,7 @@
     flex: 1;
     flex-direction: column;
     text-align: center;
+    justify-content: space-between;
 }
 
 .timeContainer {
@@ -26,4 +27,19 @@
     align-items: center;
     margin-left: .8rem;
     font-size: 4rem;
+}
+
+.quoteContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.quoteTitle {
+    font-weight: normal;
+    font-size: 1.6rem;
+    width: 80%;
 }
