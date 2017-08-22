@@ -72,7 +72,7 @@ export default class SetupApp extends Component {
                         </label>
                     </div>
 
-                    <button className={styles.button + ' button'}>Motivate?</button>
+                    <button className={styles.button + ' button'}>Motivate</button>
                 </form>
             </section>
         );
